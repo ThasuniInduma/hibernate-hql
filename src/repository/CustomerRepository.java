@@ -31,4 +31,26 @@ public class CustomerRepository {
         List<Object[]> data = query.list();
         return data;
     }
+
+    public List<Object[]> getAllCustomerNameAndDob(){
+        String hql = "SELECT c.id, c.name, c.dob FROM CustomerEntity as c";
+        Query query = session.createQuery(hql);
+        List<Object[]> data = query.list();
+        return data;
+    }
+
+    public CustomerEntity findCustomerById(String id){
+        String hql = "FROM CustomerEntity WHERE id = '" + id + "'";
+        Query query = session.createQuery(hql);
+        CustomerEntity customerEntity = (CustomerEntity) query.uniqueResult();
+        return customerEntity;
+    }
+
+    public CustomerEntity findCustomerByIdUsingNamedParameters(String id){
+        String hql = "FROM CustomerEntity WHERE id=:id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", id);
+        CustomerEntity customerEntity = (CustomerEntity) query.uniqueResult();
+        return customerEntity;
+    }
 }
