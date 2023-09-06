@@ -27,7 +27,18 @@ public class App {
         //CustomerEntity customerEntity = customerRepository.findCustomerById("C001");
         //System.out.println(customerEntity.toString());
 
-        CustomerEntity customerEntity = customerRepository.findCustomerByIdUsingNamedParameters("C001");
-        System.out.println(customerEntity.toString());
+        //CustomerEntity customerEntity = customerRepository.findCustomerByIdUsingNamedParameters("C001");
+        //System.out.println(customerEntity.toString());
+
+        //List<CustomerEntity> customerEntities = customerRepository.getAllCustomersOrderByNameDesc();
+        //customerEntities.forEach(System.out::println);
+
+        //Object[] data = customerRepository.getCustomerSummery();
+        //System.out.println(Arrays.toString(data));
+
+        List<Object[]> data = customerRepository.getAllCustomerNameAndDob();
+        for (Object[] row : data) {
+            System.out.println(Arrays.toString(row));
+        }
     }
 }
